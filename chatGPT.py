@@ -15,12 +15,12 @@ class ChatGPT:
         self.openai = openai
         self.openai.api_key = token
 
-    def create_text(self, prompt: str, model: str = "text-davinci-003") -> Response:
+    def create_text(self, prompt: str, model: str = "text-davinci-003", temperature: float = 0.5) -> Response:
         start = time.time()
         response = self.openai.Completion.create(
             engine=model,
             prompt=prompt,
-            temperature=0.5,
+            temperature=temperature,
             max_tokens=600,
             top_p=1.0,
             frequency_penalty=0.0,

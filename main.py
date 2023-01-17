@@ -4,6 +4,8 @@ import chatGPT
 
 from dotenv import load_dotenv
 
+from telegramBot import TelegramBot
+
 if __name__ == '__main__':
     load_dotenv()  # take environment variables from .env
 
@@ -30,4 +32,6 @@ if __name__ == '__main__':
         exit(1)
 
     ai = chatGPT.ChatGPT(openai_api_token)
-    x = ai.create_text("Pretend that you are Glados from Portal and say something")
+
+    telegram_bot = TelegramBot(token=telegram_bot_token, ai=ai, allowed=user_allowed)
+    telegram_bot.run()
